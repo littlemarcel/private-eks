@@ -1,0 +1,16 @@
+image:
+  repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/efs-csi-driver/amazon/aws-efs-csi-driver
+sidecars:
+  livenessProbe:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/livenessprobe
+  nodeDriverRegistrar:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/node-driver-registrar
+  csiProvisioner:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/external-provisioner
+controller:
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::315727832121:role/demo-dev01-efs-csi-driver-role

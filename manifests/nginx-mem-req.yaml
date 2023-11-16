@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-mem-req-pod
+  labels:
+    app: nginx-mem-req
+spec:
+  containers:
+    - name: nginx
+      image: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/nginx/nginx:1.25
+      ports:
+        - containerPort: 80
+      resources:
+        requests:
+          memory: "2500Mi"

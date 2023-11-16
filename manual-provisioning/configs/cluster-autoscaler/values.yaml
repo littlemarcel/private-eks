@@ -1,0 +1,10 @@
+awsRegion: us-east-2
+image:
+  repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/k8s/autoscaling/cluster-autoscaler
+autoDiscovery:
+  clusterName: demo-dev01
+rbac:
+  serviceAccount:
+    name: cluster-autoscaler-controller-sa
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::315727832121:role/demo-dev01-cluster-autoscaler-role
