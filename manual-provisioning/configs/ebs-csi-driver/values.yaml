@@ -1,0 +1,26 @@
+image:
+  repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/ebs-csi-driver/aws-ebs-csi-driver
+sidecars:
+  attacher:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/external-attacher
+  livenessProbe:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/livenessprobe
+  nodeDriverRegistrar:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/node-driver-registrar
+  provisioner:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/external-provisioner
+  resizer:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/external-resizer
+  snapshotter:
+    image:
+      repository: 315727832121.dkr.ecr.us-east-2.amazonaws.com/ecr-public/eks-distro/kubernetes-csi/external-snapshotter/csi-snapsotter
+controller:
+  region: us-east-2
+  serviceAccount:
+    annotations:
+      eks.amazonaws.com/role-arn: arn:aws:iam::315727832121:role/demo-dev01-ebs-csi-driver-role

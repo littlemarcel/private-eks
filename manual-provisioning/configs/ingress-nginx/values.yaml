@@ -1,0 +1,26 @@
+controller:
+  image:
+    registry: 315727832121.dkr.ecr.us-east-2.amazonaws.com/k8s
+  admissionWebhooks:
+    patch:
+      image:
+        registry: 315727832121.dkr.ecr.us-east-2.amazonaws.com/k8s
+  ingressClassResource:
+    default: true
+  service:
+    external:
+      enabled: false
+    internal:
+      enabled: true
+      annotations:
+        service.beta.kubernetes.io/aws-load-balancer-scheme: "internal"
+        service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+        service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+        service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "tcp"
+        service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: "true"
+serviceAccount:
+  annotations:
+    eks.amazonaws.com/role-arn: arn:aws:iam::315727832121:role/demo-dev01-ingress-controller-role
+defaultBackend:
+  image:
+    registry: 315727832121.dkr.ecr.us-east-2.amazonaws.com/k8s
